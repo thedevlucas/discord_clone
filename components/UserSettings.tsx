@@ -92,6 +92,9 @@ export default function UserSettings({ onClose }: UserSettingsProps) {
 
   return (
     <div className={styles.settingsWrapper}>
+      {/* Left Fill */}
+      <div className={styles.leftFill}></div>
+      
       {/* Sidebar */}
       <nav className={styles.sidebar}>
         <div className={styles.sidebarScroller}>
@@ -257,8 +260,10 @@ export default function UserSettings({ onClose }: UserSettingsProps) {
             )}
           </div>
         </div>
-        
-        {/* Close Button */}
+      </main>
+
+      {/* Right Fill with Close Button */}
+      <div className={styles.rightFill}>
         <div className={styles.closeSection}>
           <button className={styles.closeButton} onClick={onClose} aria-label="Close Settings">
             <svg aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24">
@@ -267,7 +272,7 @@ export default function UserSettings({ onClose }: UserSettingsProps) {
           </button>
           <span className={styles.closeLabel}>ESC</span>
         </div>
-      </main>
+      </div>
     </div>
   );
 }
