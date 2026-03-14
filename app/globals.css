@@ -1,0 +1,158 @@
+/* Discord CSS Variables and Base Styles */
+:root {
+  /* Discord Dark Theme Colors */
+  --background-primary: #313338;
+  --background-secondary: #2b2d31;
+  --background-secondary-alt: #232428;
+  --background-tertiary: #1e1f22;
+  --background-accent: #4e5058;
+  --background-floating: #111214;
+  --background-modifier-hover: rgba(79, 84, 92, 0.16);
+  --background-modifier-active: rgba(79, 84, 92, 0.24);
+  --background-modifier-selected: rgba(79, 84, 92, 0.32);
+  --background-modifier-accent: hsla(0, 0%, 100%, 0.06);
+  --background-mod-muted: rgba(79, 84, 92, 0.4);
+  --background-mod-subtle: rgba(79, 84, 92, 0.2);
+  --background-feedback-notification: #f23f43;
+  
+  /* Text Colors */
+  --text-default: #dbdee1;
+  --text-strong: #f2f3f5;
+  --text-muted: #949ba4;
+  --text-normal: #dbdee1;
+  --text-positive: #23a559;
+  --text-link: #00a8fc;
+  --text-brand: #5865f2;
+  --text-feedback-positive: #23a55a;
+  --text-feedback-warning: #f0b232;
+  --text-feedback-critical: #f23f43;
+  
+  /* Interactive Colors */
+  --interactive-normal: #b5bac1;
+  --interactive-hover: #dbdee1;
+  --interactive-active: #fff;
+  --interactive-muted: #4e5058;
+  --interactive-icon-default: #b5bac1;
+  --interactive-text-active: #f2f3f5;
+  --interactive-text-default: #b5bac1;
+  
+  /* Brand Colors */
+  --brand-400: #949cf7;
+  --brand-500: #5865f2;
+  --brand-560: #4752c4;
+  --brand-600: #4752c4;
+  
+  /* Status Colors */
+  --status-positive-background: #248046;
+  --status-positive-text: #23a55a;
+  --status-danger-background: #da373c;
+  --status-danger-text: #f23f43;
+  --status-warning-background: #faa81a;
+  
+  /* Green (Online) */
+  --green-360: #23a55a;
+  --green-400: #3ba55d;
+  
+  /* Red (DND/Error) */
+  --red-400: #f23f43;
+  --red-500: #da373c;
+  
+  /* Yellow (Idle) */
+  --yellow-300: #faa81a;
+  
+  /* Border Colors */
+  --border-subtle: rgba(255, 255, 255, 0.04);
+  --border-strong: rgba(255, 255, 255, 0.08);
+  
+  /* Scrollbar */
+  --scrollbar-thin-track: transparent;
+  --scrollbar-thin-thumb: #1a1b1e;
+  --scrollbar-auto-track: #2b2d31;
+  --scrollbar-auto-thumb: #1a1b1e;
+  
+  /* Channel Colors */
+  --channels-default: #80848e;
+  --channel-icon: #80848e;
+  
+  /* Header */
+  --header-primary: #f2f3f5;
+  --header-secondary: #b5bac1;
+  
+  /* Icon Colors */
+  --icon-voice-muted: #f23f43;
+  
+  /* Font */
+  --font-display: "gg sans", "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-primary: "gg sans", "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  
+  /* Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-round: 9999px;
+  
+  /* Spacing */
+  --space-4: 4px;
+  --space-8: 8px;
+  
+  /* White/Black with opacity */
+  --white: #fff;
+  --black: #000;
+  --opacity-white-60: rgba(255, 255, 255, 0.6);
+  --opacity-black-20: rgba(0, 0, 0, 0.2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  font-family: var(--font-primary);
+  font-size: 16px;
+  line-height: 1.375;
+  background-color: var(--background-tertiary);
+  color: var(--text-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#__next {
+  height: 100%;
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--scrollbar-thin-track);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thin-thumb);
+  border-radius: 4px;
+  min-height: 40px;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+
+/* Hidden visually but accessible to screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

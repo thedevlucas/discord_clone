@@ -1,0 +1,122 @@
+.membersList {
+  width: 240px;
+  height: 100%;
+  background-color: var(--background-secondary);
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.membersScroller {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 8px 0 8px 8px;
+}
+
+.membersContent {
+  padding-right: 8px;
+}
+
+.membersGroup {
+  padding: 24px 8px 4px 8px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--channels-default);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.membersGroup:first-child {
+  padding-top: 8px;
+}
+
+.member {
+  padding: 1px 0;
+  cursor: pointer;
+}
+
+.memberContent {
+  display: flex;
+  align-items: center;
+  padding: 6px 8px;
+  border-radius: 4px;
+  transition: background-color 0.1s ease;
+}
+
+.member:hover .memberContent {
+  background-color: var(--background-modifier-hover);
+}
+
+.avatarWrapper {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--background-tertiary);
+}
+
+.statusIndicator {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 3px solid var(--background-secondary);
+  box-sizing: content-box;
+}
+
+.member:hover .statusIndicator {
+  border-color: var(--background-secondary);
+}
+
+.memberInfo {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+}
+
+.memberName {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.memberActivity {
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Scrollbar styling */
+.membersScroller::-webkit-scrollbar {
+  width: 8px;
+}
+
+.membersScroller::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.membersScroller::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thin-thumb);
+  border-radius: 4px;
+}
