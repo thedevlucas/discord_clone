@@ -1,0 +1,151 @@
+.serverSidebar {
+  width: 72px;
+  height: 100%;
+  background-color: var(--background-tertiary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 12px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex-shrink: 0;
+}
+
+.serverList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.serverItem {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+}
+
+.pillWrapper {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.pill {
+  display: block;
+  width: 8px;
+  background-color: var(--white);
+  border-radius: 0 4px 4px 0;
+  transition: height 0.15s ease-out;
+}
+
+.pillNotification {
+  height: 8px;
+}
+
+.pillSelected {
+  height: 40px;
+}
+
+.serverIconWrapper {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.serverIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--background-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--interactive-normal);
+  font-size: 18px;
+  font-weight: 500;
+  transition: border-radius 0.15s ease-out, background-color 0.15s ease-out, color 0.15s ease-out;
+  overflow: hidden;
+}
+
+.serverIcon:hover {
+  border-radius: 16px;
+  background-color: var(--brand-500);
+  color: var(--white);
+}
+
+.serverIconSelected {
+  border-radius: 16px;
+}
+
+.serverIcon[data-home="true"] {
+  background-color: var(--background-primary);
+  color: var(--green-360);
+}
+
+.serverIcon[data-home="true"]:hover {
+  background-color: var(--green-360);
+  color: var(--white);
+}
+
+.serverIcon[data-action="add"],
+.serverIcon[data-action="explore"] {
+  background-color: var(--background-primary);
+  color: var(--green-360);
+}
+
+.serverIcon[data-action="add"]:hover,
+.serverIcon[data-action="explore"]:hover {
+  background-color: var(--green-360);
+  color: var(--white);
+}
+
+.selected .serverIcon {
+  border-radius: 16px;
+}
+
+.notificationBadge {
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  background-color: var(--background-feedback-notification);
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.separator {
+  width: 100%;
+  padding: 0 12px;
+  margin: 2px 0;
+}
+
+.separatorLine {
+  width: 32px;
+  height: 2px;
+  background-color: var(--background-modifier-accent);
+  border-radius: 1px;
+  margin: 0 auto;
+}
