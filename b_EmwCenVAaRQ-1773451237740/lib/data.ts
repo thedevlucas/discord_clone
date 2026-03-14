@@ -299,3 +299,121 @@ export const currentUser = {
   avatar: "/discord-assets/avatar1.jpg",
   status: "online" as const,
 };
+
+// Friends list for Home page
+export interface Friend {
+  id: string;
+  username: string;
+  avatar: string;
+  status: "online" | "idle" | "dnd" | "offline";
+  activity?: string;
+}
+
+export const friends: Friend[] = [
+  {
+    id: "f1",
+    username: "MarcoGames",
+    avatar: "/discord-assets/friend1.webp",
+    status: "online",
+    activity: "Jugando Valorant",
+  },
+  {
+    id: "f2",
+    username: "SofiaStream",
+    avatar: "/discord-assets/friend2.webp",
+    status: "online",
+    activity: "Streaming en Twitch",
+  },
+  {
+    id: "f3",
+    username: "DiegoMusic",
+    avatar: "/discord-assets/friend3.webp",
+    status: "idle",
+    activity: "Escuchando Spotify",
+  },
+  {
+    id: "f4",
+    username: "LunaArt",
+    avatar: "/discord-assets/friend4.webp",
+    status: "online",
+  },
+  {
+    id: "f5",
+    username: "AndresCode",
+    avatar: "/discord-assets/friend5.webp",
+    status: "dnd",
+    activity: "Visual Studio Code",
+  },
+  {
+    id: "f6",
+    username: "ValentinaPlay",
+    avatar: "/discord-assets/friend6.webp",
+    status: "online",
+    activity: "Jugando Minecraft",
+  },
+  {
+    id: "f7",
+    username: "NicolasRender",
+    avatar: "/discord-assets/friend7.webp",
+    status: "idle",
+  },
+  {
+    id: "f8",
+    username: "CamilaDesign",
+    avatar: "/discord-assets/friend8.webp",
+    status: "online",
+    activity: "Adobe Photoshop",
+  },
+  {
+    id: "f9",
+    username: "SebastianDev",
+    avatar: "/discord-assets/friend9.webp",
+    status: "offline",
+  },
+  {
+    id: "f10",
+    username: "IsabellaChat",
+    avatar: "/discord-assets/friend10.webp",
+    status: "online",
+  },
+  {
+    id: "f11",
+    username: "MateoStream",
+    avatar: "/discord-assets/friend11.webp",
+    status: "online",
+    activity: "Streaming Fortnite",
+  },
+  {
+    id: "f12",
+    username: "EmmaGamer",
+    avatar: "/discord-assets/friend12.webp",
+    status: "idle",
+    activity: "Jugando League of Legends",
+  },
+  {
+    id: "f13",
+    username: "LucasEdit",
+    avatar: "/discord-assets/friend13.webp",
+    status: "dnd",
+    activity: "Premiere Pro",
+  },
+  {
+    id: "f14",
+    username: "MiaMusic",
+    avatar: "/discord-assets/friend14.webp",
+    status: "online",
+    activity: "FL Studio",
+  },
+  {
+    id: "f15",
+    username: "ThomasNet",
+    avatar: "/discord-assets/friend15.webp",
+    status: "offline",
+  },
+  {
+    id: "f16",
+    username: "OliviaWrite",
+    avatar: "/discord-assets/friend16.webp",
+    status: "online",
+  },
+];

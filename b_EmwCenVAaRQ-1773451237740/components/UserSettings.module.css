@@ -1,0 +1,414 @@
+.settingsWrapper {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--background-primary);
+}
+
+/* Sidebar */
+.sidebar {
+  width: 218px;
+  background-color: var(--background-secondary);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.sidebarScroller {
+  flex: 1;
+  overflow-y: auto;
+  padding: 60px 6px 60px 20px;
+}
+
+.section {
+  margin-bottom: 8px;
+}
+
+.sectionTitle {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--channels-default);
+  padding: 6px 10px;
+  margin-bottom: 2px;
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 6px 10px;
+  margin-bottom: 2px;
+  border-radius: 4px;
+  background: none;
+  border: none;
+  color: var(--interactive-normal);
+  font-size: 16px;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.1s ease, color 0.1s ease;
+}
+
+.menuItem:hover {
+  background-color: var(--background-modifier-hover);
+  color: var(--interactive-hover);
+}
+
+.menuItem.active {
+  background-color: var(--background-modifier-selected);
+  color: var(--interactive-active);
+}
+
+.divider {
+  height: 1px;
+  margin: 8px 10px;
+  background-color: var(--background-modifier-accent);
+}
+
+.versionInfo {
+  padding: 8px 10px;
+}
+
+.socialLinks {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.socialLink {
+  color: var(--interactive-normal);
+  padding: 4px;
+}
+
+.socialLink:hover {
+  color: var(--interactive-hover);
+}
+
+.version {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* Content */
+.content {
+  flex: 1;
+  display: flex;
+  position: relative;
+  max-width: 740px;
+  min-width: 460px;
+  background-color: var(--background-primary);
+}
+
+.contentScroller {
+  flex: 1;
+  overflow-y: auto;
+  padding: 60px 40px 80px;
+}
+
+.contentInner {
+  max-width: 660px;
+}
+
+/* Account Settings */
+.accountSettings {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.pageTitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--header-primary);
+  margin-bottom: 20px;
+}
+
+/* User Card */
+.userCard {
+  background-color: var(--background-secondary);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.userBanner {
+  height: 100px;
+  background: linear-gradient(135deg, #5865f2 0%, #eb459e 100%);
+}
+
+.userCardBody {
+  padding: 16px;
+  padding-top: 60px;
+  position: relative;
+}
+
+.userAvatarSection {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 16px;
+  position: absolute;
+  top: -40px;
+  left: 16px;
+  right: 16px;
+}
+
+.avatarWrapper {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 6px solid var(--background-secondary);
+  background-color: var(--background-tertiary);
+}
+
+.statusIndicator {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 4px solid var(--background-secondary);
+  box-sizing: content-box;
+}
+
+.userMainInfo {
+  display: flex;
+  flex-direction: column;
+  margin-left: 16px;
+  margin-top: 48px;
+}
+
+.displayName {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--header-primary);
+}
+
+.username {
+  font-size: 14px;
+  color: var(--header-secondary);
+}
+
+.editProfileBtn {
+  margin-left: auto;
+  margin-top: 48px;
+  padding: 4px 16px;
+  background-color: var(--brand-500);
+  color: var(--white);
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.editProfileBtn:hover {
+  background-color: var(--brand-560);
+}
+
+.userDetails {
+  background-color: var(--background-tertiary);
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 48px;
+}
+
+.detailRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+.detailRow:not(:last-child) {
+  border-bottom: 1px solid var(--background-modifier-accent);
+}
+
+.detailLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--header-secondary);
+}
+
+.value {
+  font-size: 16px;
+  color: var(--text-normal);
+}
+
+.editBtn {
+  padding: 4px 16px;
+  background-color: var(--background-secondary);
+  color: var(--text-normal);
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.editBtn:hover {
+  background-color: var(--background-modifier-hover);
+}
+
+/* Settings Sections */
+.settingsSection {
+  padding: 16px 0;
+  border-top: 1px solid var(--background-modifier-accent);
+}
+
+.sectionHeader {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--header-primary);
+  margin-bottom: 16px;
+}
+
+.subHeader {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--header-primary);
+  margin-bottom: 8px;
+  margin-top: 16px;
+}
+
+.description {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.4;
+  margin-bottom: 16px;
+}
+
+.primaryBtn {
+  padding: 8px 16px;
+  background-color: var(--brand-500);
+  color: var(--white);
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.primaryBtn:hover {
+  background-color: var(--brand-560);
+}
+
+.secondaryBtn {
+  padding: 8px 16px;
+  background-color: var(--background-secondary);
+  color: var(--text-normal);
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.secondaryBtn:hover {
+  background-color: var(--background-modifier-hover);
+}
+
+.twoFactorSection {
+  margin-top: 20px;
+}
+
+.dangerButtons {
+  display: flex;
+  gap: 16px;
+}
+
+.dangerBtn {
+  padding: 8px 16px;
+  background-color: var(--red-400);
+  color: var(--white);
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.dangerBtn:hover {
+  background-color: var(--red-500);
+}
+
+.dangerBtnOutline {
+  padding: 8px 16px;
+  background: none;
+  color: var(--red-400);
+  border: 1px solid var(--red-400);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.dangerBtnOutline:hover {
+  background-color: var(--red-400);
+  color: var(--white);
+}
+
+/* Placeholder Content */
+.placeholderContent {
+  padding: 20px 0;
+}
+
+/* Close Button */
+.closeSection {
+  position: fixed;
+  top: 60px;
+  right: calc(50% - 370px - 72px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.closeButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: 2px solid var(--interactive-normal);
+  border-radius: 50%;
+  color: var(--interactive-normal);
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+.closeButton:hover {
+  border-color: var(--interactive-hover);
+  color: var(--interactive-hover);
+}
+
+.closeLabel {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--interactive-normal);
+}
+
+@media (max-width: 900px) {
+  .closeSection {
+    right: 20px;
+  }
+}
