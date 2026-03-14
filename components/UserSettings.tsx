@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { currentUser } from "@/lib/data";
 import styles from "./UserSettings.module.css";
 
@@ -77,6 +77,18 @@ function StatusIndicator({ status }: { status: string }) {
 
 export default function UserSettings({ onClose }: UserSettingsProps) {
   const [activeCategory, setActiveCategory] = useState<SettingsCategory>("mi-cuenta");
+
+  // Handle ESC key to close settings
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        onClose();
+      }
+    };
+    
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [onClose]);
 
   return (
     <div className={styles.settingsWrapper}>

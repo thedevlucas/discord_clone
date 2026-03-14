@@ -1,10 +1,14 @@
 "use client";
 
-import { currentUser, friends } from "@/lib/data";
+import { currentUser, friends, groupChats } from "@/lib/data";
 import styles from "./FriendsSidebar.module.css";
 
 interface FriendsSidebarProps {
   onOpenSettings: () => void;
+  onSelectDM?: (friendId: string) => void;
+  onSelectGroup?: (groupId: string) => void;
+  selectedDMId?: string | null;
+  selectedGroupId?: string | null;
 }
 
 function StatusIndicator({ status }: { status: string }) {
@@ -52,7 +56,13 @@ function ShopIcon() {
   );
 }
 
-export default function FriendsSidebar({ onOpenSettings }: FriendsSidebarProps) {
+export default function FriendsSidebar({ 
+  onOpenSettings, 
+  onSelectDM, 
+  onSelectGroup,
+  selectedDMId,
+  selectedGroupId 
+}: FriendsSidebarProps) {
   // Get recent DM friends (top 8)
   const recentDMs = friends.filter(f => f.status !== "offline").slice(0, 8);
 
@@ -89,7 +99,58 @@ export default function FriendsSidebar({ onOpenSettings }: FriendsSidebarProps) 
         </ul>
       </nav>
 
-      {/* Direct Messages Header */}
+      {/* Group Chats */}
+      {groupChats && groupChats.length > 0 && (
+        <>
+          <div className={styles.dmHeader}>
+            <span className={styles.dmHeaderText}>Chats de grupo</span>
+          </div>
+          <div className={styles.dmListSection}>
+            <ul className={styles.dmListItems}>
+              {groupChats.map((group) => (
+                <li key={group.id}>
+                  <button 
+                    className={`${styles.dmItem} ${selectedGroupId === group.id ? styles.dmItemSelected : ""}`}
+                    onClick={() => onSelectGroup?.(group.id)}
+                  >
+                    <div className={styles.groupAvatarWrapper}>
+                      <div className={styles.groupAvatar}>
+                        {group.members.slice(0, 2).map((member, idx) => (
+                          <div 
+                            key={member.id}
+                            className={styles.groupAvatarMember}
+                            style={{ 
+                              backgroundImage: `url(${member.avatar})`,
+                              backgroundSize: "cover",
+                              backgroundPosition: "center",
+                              zIndex: 2 - idx
+                            }}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                    <div className={styles.dmInfo}>
+                      <span className={styles.dmName}>{group.name}</span>
+                      <span className={styles.dmActivity}>{group.members.length} miembros</span>
+                    </div>
+                    <button 
+                      className={styles.closeButton} 
+                      aria-label="Close Group"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <svg aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M17.3 18.7a1 1 0 0 0 1.4-1.4L13.42 12l5.3-5.3a1 1 0 0 0-1.42-1.4L12 10.58l-5.3-5.3a1 1 0 0 0-1.4 1.42L10.58 12l-5.3 5.3a1 1 0 1 0 1.42 1.4L12 13.42l5.3 5.3Z"/>
+                      </svg>
+                    </button>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </>
+      )}
+
+      {/* DM List */}
       <div className={styles.dmHeader}>
         <span className={styles.dmHeaderText}>Mensajes directos</span>
         <button className={styles.addDmButton} aria-label="Create DM">
@@ -98,13 +159,14 @@ export default function FriendsSidebar({ onOpenSettings }: FriendsSidebarProps) 
           </svg>
         </button>
       </div>
-
-      {/* DM List */}
       <div className={styles.dmList}>
         <ul className={styles.dmListItems}>
           {recentDMs.map((friend) => (
             <li key={friend.id}>
-              <a href="#" className={styles.dmItem}>
+              <button 
+                className={`${styles.dmItem} ${selectedDMId === friend.id ? styles.dmItemSelected : ""}`}
+                onClick={() => onSelectDM?.(friend.id)}
+              >
                 <div className={styles.avatarWrapper}>
                   <div 
                     className={styles.avatar}
@@ -122,12 +184,16 @@ export default function FriendsSidebar({ onOpenSettings }: FriendsSidebarProps) 
                     <span className={styles.dmActivity}>{friend.activity}</span>
                   )}
                 </div>
-                <button className={styles.closeButton} aria-label="Close DM">
+                <button 
+                  className={styles.closeButton} 
+                  aria-label="Close DM"
+                  onClick={(e) => e.stopPropagation()}
+                >
                   <svg aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24">
                     <path fill="currentColor" d="M17.3 18.7a1 1 0 0 0 1.4-1.4L13.42 12l5.3-5.3a1 1 0 0 0-1.42-1.4L12 10.58l-5.3-5.3a1 1 0 0 0-1.4 1.42L10.58 12l-5.3 5.3a1 1 0 1 0 1.42 1.4L12 13.42l5.3 5.3Z"/>
                   </svg>
                 </button>
-              </a>
+              </button>
             </li>
           ))}
         </ul>

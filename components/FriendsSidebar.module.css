@@ -134,6 +134,14 @@
   background-color: var(--background-modifier-hover);
 }
 
+.dmItemSelected {
+  background-color: var(--background-modifier-selected);
+}
+
+.dmItemSelected .dmName {
+  color: var(--interactive-active);
+}
+
 .dmItem:hover .closeButton {
   opacity: 1;
 }
@@ -210,6 +218,42 @@
 
 .closeButton:hover {
   color: var(--interactive-hover);
+}
+
+/* Group Avatar Styles */
+.groupAvatarWrapper {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+.groupAvatar {
+  width: 32px;
+  height: 32px;
+  position: relative;
+}
+
+.groupAvatarMember {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid var(--background-secondary);
+}
+
+.groupAvatarMember:first-child {
+  top: 0;
+  left: 0;
+}
+
+.groupAvatarMember:last-child {
+  bottom: 0;
+  right: 0;
+}
+
+.dmListSection {
+  padding: 0 8px;
 }
 
 /* User Panel */
