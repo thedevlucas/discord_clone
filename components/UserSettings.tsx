@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { currentUser } from "@/lib/data";
 import styles from "./UserSettings.module.css";
 
@@ -78,8 +78,23 @@ function StatusIndicator({ status }: { status: string }) {
 export default function UserSettings({ onClose }: UserSettingsProps) {
   const [activeCategory, setActiveCategory] = useState<SettingsCategory>("mi-cuenta");
 
+  // Handle ESC key to close settings
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        onClose();
+      }
+    };
+    
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [onClose]);
+
   return (
     <div className={styles.settingsWrapper}>
+      {/* Left Fill */}
+      <div className={styles.leftFill}></div>
+      
       {/* Sidebar */}
       <nav className={styles.sidebar}>
         <div className={styles.sidebarScroller}>
@@ -233,7 +248,132 @@ export default function UserSettings({ onClose }: UserSettingsProps) {
               </div>
             )}
 
-            {activeCategory !== "mi-cuenta" && (
+            {activeCategory === "nitro" && (
+              <div className={styles.nitroPage}>
+                <h2 className={styles.pageTitle}>Nitro</h2>
+                
+                {/* Hero Section */}
+                <div className={styles.nitroHero}>
+                  <div className={styles.nitroHeroContent}>
+                    <div className={styles.nitroLogo}>
+                      <svg aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M2.98966977,9.35789159 C2.98966977,9.77582472 2.63442946,10.1240466 2.20807287,10.1240466 L1.78171628,10.1240466 C1.35535969,10.1240466 0.999948837,9.77582472 0.999948837,9.35789159 C0.999948837,8.93995846 1.35535969,8.59173658 1.78171628,8.59173658 L2.20807287,8.59173658 C2.63442946,8.59173658 2.98966977,8.93995846 2.98966977,9.35789159 Z M22.2467643,9.14892503 C22.0738794,9.14892503 21.9135916,9.07073545 21.8034849,8.93995846 L20.5029371,7.35769734 L20.5029371,9.35789159 C20.5029371,9.77582472 20.1476968,10.1240466 19.7213402,10.1240466 L19.2949836,10.1240466 C18.868627,10.1240466 18.5133867,9.77582472 18.5133867,9.35789159 L18.5133867,5.07798549 C18.5133867,4.65765931 18.868627,4.31183048 19.2949836,4.31183048 L19.6463761,4.31183048 C19.8192611,4.31183048 19.9795489,4.39002006 20.0896555,4.52079705 L21.3902033,6.10305765 L21.3902033,5.07798549 C21.3902033,4.65765931 21.7454436,4.31183048 22.17198,4.31183048 L22.5765496,4.31183048 C23.0029062,4.31183048 23.3581465,4.65765931 23.3581465,5.07798549 L23.3581465,9.35789159 C23.3581465,9.77582472 23.0029062,10.1240466 22.5765496,10.1240466 L22.2467643,10.1240466 Z M9.94776493,9.14892503 C9.77487994,9.14892503 9.61459219,9.07073545 9.50448555,8.93995846 L8.20393773,7.35769734 L8.20393773,9.35789159 C8.20393773,9.77582472 7.84869743,10.1240466 7.42234084,10.1240466 L6.99598425,10.1240466 C6.56962766,10.1240466 6.21438735,9.77582472 6.21438735,9.35789159 L6.21438735,5.07798549 C6.21438735,4.65765931 6.56962766,4.31183048 6.99598425,4.31183048 L7.34737668,4.31183048 C7.52026167,4.31183048 7.68054942,4.39002006 7.79065606,4.52079705 L9.09120389,6.10305765 L9.09120389,5.07798549 C9.09120389,4.65765931 9.4464442,4.31183048 9.87280079,4.31183048 L10.2774704,4.31183048 C10.7038272,4.31183048 11.0590673,4.65765931 11.0590673,5.07798549 L11.0590673,9.35789159 C11.0590673,9.77582472 10.7038272,10.1240466 10.2774704,10.1240466 L9.94776493,10.1240466 L9.94776493,9.14892503 Z M2.98966977,5.07798549 C2.98966977,4.65765931 2.63442946,4.31183048 2.20807287,4.31183048 L1.78171628,4.31183048 C1.35535969,4.31183048 0.999948837,4.65765931 0.999948837,5.07798549 C0.999948837,5.49831168 1.35535969,5.8441405 1.78171628,5.8441405 L2.20807287,5.8441405 C2.63442946,5.8441405 2.98966977,5.49831168 2.98966977,5.07798549 Z M5.71873646,5.07798549 C5.71873646,5.49831168 5.36349615,5.8441405 4.93713956,5.8441405 L2.98966977,5.8441405 L2.98966977,7.26792599 L4.93713956,7.26792599 C5.36349615,7.26792599 5.71873646,7.61375481 5.71873646,8.03408099 C5.71873646,8.45680022 5.36349615,8.8002221 4.93713956,8.8002221 L2.56229859,8.8002221 C2.136113,8.8002221 1.78171628,8.45680022 1.78171628,8.03408099 L1.78171628,5.29455506 C1.78171628,4.87182888 2.136113,4.52840699 2.56229859,4.52840699 L4.93713956,4.52840699 C5.36349615,4.52840699 5.71873646,4.87182888 5.71873646,5.29455506 L5.71873646,5.07798549 Z M17.9269041,6.53484519 C17.9269041,8.14529594 16.6262279,9.45015896 15.0079802,9.45015896 L12.4196945,9.45015896 C11.9933379,9.45015896 11.6380976,9.10433013 11.6380976,8.6840039 L11.6380976,5.29455506 C11.6380976,4.87182888 11.9933379,4.52840699 12.4196945,4.52840699 L15.0079802,4.52840699 C16.6262279,4.52840699 17.9269041,5.83327002 17.9269041,7.44372077 L17.9269041,6.53484519 Z M16.137225,7.21793599 C16.137225,6.39004292 15.4532996,5.70934377 14.6213336,5.70934377 L13.4276479,5.70934377 L13.4276479,8.72652874 L14.6213336,8.72652874 C15.4532996,8.72652874 16.137225,8.04582907 16.137225,7.21793599 Z"/>
+                      </svg>
+                      <span className={styles.nitroText}>NITRO</span>
+                    </div>
+                    <p className={styles.nitroTagline}>Desbloquea lo mejor de Discord</p>
+                    <p className={styles.nitroDescription}>
+                      Suscribete a Nitro para obtener emojis personalizados, stickers animados, mejores subidas de archivos y mucho mas.
+                    </p>
+                  </div>
+                  <div className={styles.nitroHeroImage}>
+                    <div className={styles.nitroRocket}>
+                      <svg viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg" width="120" height="120">
+                        <path d="M48 8C25.91 8 8 25.91 8 48s17.91 40 40 40 40-17.91 40-40S70.09 8 48 8z" fill="url(#paint0_linear)"/>
+                        <path d="M48 24l-12 24h24L48 24z" fill="#fff"/>
+                        <path d="M36 48v16h24V48H36z" fill="#fff"/>
+                        <path d="M32 64l8 8h16l8-8H32z" fill="#fff"/>
+                        <defs>
+                          <linearGradient id="paint0_linear" x1="8" y1="8" x2="88" y2="88" gradientUnits="userSpaceOnUse">
+                            <stop stopColor="#5865F2"/>
+                            <stop offset="1" stopColor="#EB459E"/>
+                          </linearGradient>
+                        </defs>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Plans */}
+                <div className={styles.nitroPlans}>
+                  {/* Nitro Basic */}
+                  <div className={styles.nitroPlan}>
+                    <div className={styles.planHeader}>
+                      <span className={styles.planBadge}>NITRO BASIC</span>
+                    </div>
+                    <div className={styles.planPrice}>
+                      <span className={styles.priceAmount}>$2.99</span>
+                      <span className={styles.priceUnit}>/mes</span>
+                    </div>
+                    <ul className={styles.planFeatures}>
+                      <li>Emojis personalizados en cualquier lugar</li>
+                      <li>Stickers personalizados en cualquier lugar</li>
+                      <li>50 MB de subidas</li>
+                      <li>Insignia de Nitro en tu perfil</li>
+                    </ul>
+                    <button className={styles.planBtn}>Suscribirse</button>
+                  </div>
+
+                  {/* Nitro Full */}
+                  <div className={`${styles.nitroPlan} ${styles.nitroPlanFeatured}`}>
+                    <div className={styles.planHeader}>
+                      <span className={styles.planBadge}>NITRO</span>
+                      <span className={styles.planBadgePopular}>MAS POPULAR</span>
+                    </div>
+                    <div className={styles.planPrice}>
+                      <span className={styles.priceAmount}>$9.99</span>
+                      <span className={styles.priceUnit}>/mes</span>
+                    </div>
+                    <ul className={styles.planFeatures}>
+                      <li>Emojis personalizados en cualquier lugar</li>
+                      <li>Stickers personalizados en cualquier lugar</li>
+                      <li>500 MB de subidas</li>
+                      <li>Streaming HD</li>
+                      <li>2 Server Boosts incluidos</li>
+                      <li>Insignia de Nitro en tu perfil</li>
+                      <li>Fondo de perfil personalizado</li>
+                      <li>Decoraciones de avatar</li>
+                    </ul>
+                    <button className={`${styles.planBtn} ${styles.planBtnPrimary}`}>Suscribirse</button>
+                  </div>
+                </div>
+
+                {/* Features Grid */}
+                <div className={styles.nitroFeatures}>
+                  <h3 className={styles.nitrFeaturesTitle}>Todo lo que incluye Nitro</h3>
+                  <div className={styles.featureGrid}>
+                    <div className={styles.featureCard}>
+                      <div className={styles.featureIcon}>
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                      </div>
+                      <h4>Emojis personalizados</h4>
+                      <p>Usa emojis de cualquier servidor en el que estes.</p>
+                    </div>
+                    <div className={styles.featureCard}>
+                      <div className={styles.featureIcon}>
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                      </div>
+                      <h4>Subidas mas grandes</h4>
+                      <p>Comparte archivos de hasta 500 MB.</p>
+                    </div>
+                    <div className={styles.featureCard}>
+                      <div className={styles.featureIcon}>
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                      </div>
+                      <h4>Streaming HD</h4>
+                      <p>Transmite en 4K a 60fps.</p>
+                    </div>
+                    <div className={styles.featureCard}>
+                      <div className={styles.featureIcon}>
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                      </div>
+                      <h4>Server Boosts</h4>
+                      <p>2 boosts incluidos con tu suscripcion.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {activeCategory !== "mi-cuenta" && activeCategory !== "nitro" && (
               <div className={styles.placeholderContent}>
                 <h2 className={styles.pageTitle}>
                   {settingsMenu.flatMap(s => s.items).find(i => i.id === activeCategory)?.label || "Ajustes"}
@@ -245,8 +385,10 @@ export default function UserSettings({ onClose }: UserSettingsProps) {
             )}
           </div>
         </div>
-        
-        {/* Close Button */}
+      </main>
+
+      {/* Right Fill with Close Button */}
+      <div className={styles.rightFill}>
         <div className={styles.closeSection}>
           <button className={styles.closeButton} onClick={onClose} aria-label="Close Settings">
             <svg aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24">
@@ -255,7 +397,7 @@ export default function UserSettings({ onClose }: UserSettingsProps) {
           </button>
           <span className={styles.closeLabel}>ESC</span>
         </div>
-      </main>
+      </div>
     </div>
   );
 }

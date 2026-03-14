@@ -309,6 +309,26 @@ export interface Friend {
   activity?: string;
 }
 
+// Group chat interface
+export interface GroupChat {
+  id: string;
+  name: string;
+  members: {
+    id: string;
+    username: string;
+    avatar: string;
+    status: "online" | "idle" | "dnd" | "offline";
+  }[];
+}
+
+// DM Messages interface
+export interface DMMessage {
+  id: string;
+  senderId: string;
+  content: string;
+  timestamp: string;
+}
+
 export const friends: Friend[] = [
   {
     id: "f1",
@@ -417,3 +437,60 @@ export const friends: Friend[] = [
     status: "online",
   },
 ];
+
+// Group Chats
+export const groupChats: GroupChat[] = [
+  {
+    id: "g1",
+    name: "Gaming Squad",
+    members: [
+      { id: "f1", username: "MarcoGames", avatar: "/discord-assets/friend1.webp", status: "online" },
+      { id: "f2", username: "SofiaStream", avatar: "/discord-assets/friend2.webp", status: "online" },
+      { id: "f6", username: "ValentinaPlay", avatar: "/discord-assets/friend6.webp", status: "online" },
+      { id: "u1", username: "Carlos_Dev", avatar: "/discord-assets/avatar1.jpg", status: "online" },
+    ],
+  },
+  {
+    id: "g2",
+    name: "Devs Unidos",
+    members: [
+      { id: "f5", username: "AndresCode", avatar: "/discord-assets/friend5.webp", status: "dnd" },
+      { id: "f8", username: "CamilaDesign", avatar: "/discord-assets/friend8.webp", status: "online" },
+      { id: "u1", username: "Carlos_Dev", avatar: "/discord-assets/avatar1.jpg", status: "online" },
+    ],
+  },
+];
+
+// DM Messages for conversations
+export const dmMessages: Record<string, DMMessage[]> = {
+  f1: [
+    { id: "dm1-1", senderId: "f1", content: "Hey! Quieres jugar Valorant?", timestamp: "Today at 2:30 PM" },
+    { id: "dm1-2", senderId: "u1", content: "Claro! Dame 5 minutos", timestamp: "Today at 2:32 PM" },
+    { id: "dm1-3", senderId: "f1", content: "Perfecto, te espero en el lobby", timestamp: "Today at 2:33 PM" },
+    { id: "dm1-4", senderId: "u1", content: "Ya estoy listo!", timestamp: "Today at 2:37 PM" },
+  ],
+  f2: [
+    { id: "dm2-1", senderId: "f2", content: "Viste mi ultimo stream?", timestamp: "Today at 1:00 PM" },
+    { id: "dm2-2", senderId: "u1", content: "Si! Estuvo genial!", timestamp: "Today at 1:05 PM" },
+    { id: "dm2-3", senderId: "f2", content: "Gracias! El proximo es manana a las 8", timestamp: "Today at 1:06 PM" },
+  ],
+  f3: [
+    { id: "dm3-1", senderId: "u1", content: "Que cancion estas escuchando?", timestamp: "Yesterday at 8:00 PM" },
+    { id: "dm3-2", senderId: "f3", content: "Una playlist de lo-fi, te la comparto!", timestamp: "Yesterday at 8:05 PM" },
+  ],
+};
+
+// Group Messages
+export const groupMessages: Record<string, DMMessage[]> = {
+  g1: [
+    { id: "gm1-1", senderId: "f1", content: "Quien se conecta esta noche?", timestamp: "Today at 3:00 PM" },
+    { id: "gm1-2", senderId: "f6", content: "Yo puedo despues de las 9!", timestamp: "Today at 3:05 PM" },
+    { id: "gm1-3", senderId: "u1", content: "Yo tambien estoy disponible", timestamp: "Today at 3:10 PM" },
+    { id: "gm1-4", senderId: "f2", content: "Cuenten conmigo!", timestamp: "Today at 3:12 PM" },
+  ],
+  g2: [
+    { id: "gm2-1", senderId: "f5", content: "Alguien puede revisar mi PR?", timestamp: "Today at 10:00 AM" },
+    { id: "gm2-2", senderId: "u1", content: "Lo reviso ahora mismo", timestamp: "Today at 10:05 AM" },
+    { id: "gm2-3", senderId: "f8", content: "Yo tambien le doy un vistazo al UI", timestamp: "Today at 10:10 AM" },
+  ],
+};

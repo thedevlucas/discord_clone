@@ -1,8 +1,20 @@
 .settingsWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   display: flex;
   width: 100vw;
   height: 100vh;
   background-color: var(--background-primary);
+  z-index: 1000;
+}
+
+/* Left fill area */
+.leftFill {
+  flex: 1;
+  background-color: var(--background-secondary);
 }
 
 /* Sidebar */
@@ -12,7 +24,6 @@
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
-  margin-left: auto;
 }
 
 .sidebarScroller {
@@ -95,11 +106,10 @@
 
 /* Content */
 .content {
-  flex: 1;
+  width: 740px;
+  flex-shrink: 0;
   display: flex;
   position: relative;
-  max-width: 740px;
-  min-width: 460px;
   background-color: var(--background-primary);
 }
 
@@ -110,6 +120,7 @@
 }
 
 .contentInner {
+  width: 100%;
   max-width: 660px;
 }
 
@@ -371,11 +382,236 @@
   padding: 20px 0;
 }
 
+/* Nitro Page Styles */
+.nitroPage {
+  width: 100%;
+}
+
+.nitroHero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, #5865f2 0%, #eb459e 100%);
+  border-radius: 8px;
+  padding: 32px;
+  margin-bottom: 24px;
+}
+
+.nitroHeroContent {
+  flex: 1;
+}
+
+.nitroLogo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.nitroLogo svg {
+  color: #fff;
+}
+
+.nitroText {
+  font-size: 24px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 0.02em;
+}
+
+.nitroTagline {
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.nitroDescription {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 400px;
+  line-height: 1.5;
+}
+
+.nitroHeroImage {
+  flex-shrink: 0;
+}
+
+.nitroRocket {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.nitroPlans {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.nitroPlan {
+  background-color: var(--background-secondary);
+  border-radius: 8px;
+  padding: 24px;
+  border: 2px solid transparent;
+}
+
+.nitroPlanFeatured {
+  border-color: var(--brand-500);
+  position: relative;
+}
+
+.planHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.planBadge {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--header-primary);
+  letter-spacing: 0.02em;
+}
+
+.planBadgePopular {
+  font-size: 10px;
+  font-weight: 700;
+  color: #fff;
+  background-color: var(--brand-500);
+  padding: 2px 6px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.planPrice {
+  margin-bottom: 20px;
+}
+
+.priceAmount {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--header-primary);
+}
+
+.priceUnit {
+  font-size: 16px;
+  color: var(--text-muted);
+}
+
+.planFeatures {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px 0;
+}
+
+.planFeatures li {
+  font-size: 14px;
+  color: var(--text-normal);
+  padding: 8px 0;
+  padding-left: 24px;
+  position: relative;
+}
+
+.planFeatures li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--green-360);
+  font-weight: 700;
+}
+
+.planBtn {
+  width: 100%;
+  padding: 12px 24px;
+  background-color: var(--background-tertiary);
+  color: var(--text-normal);
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.planBtn:hover {
+  background-color: var(--background-modifier-hover);
+}
+
+.planBtnPrimary {
+  background-color: var(--brand-500);
+  color: #fff;
+}
+
+.planBtnPrimary:hover {
+  background-color: var(--brand-560);
+}
+
+.nitroFeatures {
+  margin-top: 32px;
+}
+
+.nitrFeaturesTitle {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--header-primary);
+  margin-bottom: 24px;
+}
+
+.featureGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.featureCard {
+  background-color: var(--background-secondary);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.featureIcon {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #5865f2 0%, #eb459e 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.featureCard h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--header-primary);
+  margin-bottom: 4px;
+}
+
+.featureCard p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* Right fill area */
+.rightFill {
+  flex: 1;
+  background-color: var(--background-primary);
+  position: relative;
+}
+
 /* Close Button */
 .closeSection {
-  position: fixed;
+  position: absolute;
   top: 60px;
-  right: calc(50% - 370px - 72px);
+  left: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
