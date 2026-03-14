@@ -134,15 +134,6 @@
   background-color: var(--background-modifier-hover);
 }
 
-.dmItemActive,
-.dmItemActive:hover {
-  background-color: var(--background-modifier-selected);
-}
-
-.dmItemActive .dmName {
-  color: var(--interactive-active);
-}
-
 .dmItem:hover .closeButton {
   opacity: 1;
 }
