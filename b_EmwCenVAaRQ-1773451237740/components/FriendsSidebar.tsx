@@ -1,10 +1,12 @@
 "use client";
 
-import { currentUser, friends } from "@/lib/data";
+import { currentUser, friends, Friend } from "@/lib/data";
 import styles from "./FriendsSidebar.module.css";
 
 interface FriendsSidebarProps {
   onOpenSettings: () => void;
+  onSelectFriend: (friend: Friend) => void;
+  selectedFriendId: string | null;
 }
 
 function StatusIndicator({ status }: { status: string }) {
@@ -52,7 +54,7 @@ function ShopIcon() {
   );
 }
 
-export default function FriendsSidebar({ onOpenSettings }: FriendsSidebarProps) {
+export default function FriendsSidebar({ onOpenSettings, onSelectFriend, selectedFriendId }: FriendsSidebarProps) {
   // Get recent DM friends (top 8)
   const recentDMs = friends.filter(f => f.status !== "offline").slice(0, 8);
 
@@ -104,7 +106,10 @@ export default function FriendsSidebar({ onOpenSettings }: FriendsSidebarProps) 
         <ul className={styles.dmListItems}>
           {recentDMs.map((friend) => (
             <li key={friend.id}>
-              <a href="#" className={styles.dmItem}>
+              <button 
+                onClick={() => onSelectFriend(friend)} 
+                className={`${styles.dmItem} ${selectedFriendId === friend.id ? styles.dmItemActive : ''}`}
+              >
                 <div className={styles.avatarWrapper}>
                   <div 
                     className={styles.avatar}
@@ -122,12 +127,12 @@ export default function FriendsSidebar({ onOpenSettings }: FriendsSidebarProps) 
                     <span className={styles.dmActivity}>{friend.activity}</span>
                   )}
                 </div>
-                <button className={styles.closeButton} aria-label="Close DM">
+                <span className={styles.closeButton} aria-label="Close DM" onClick={(e) => e.stopPropagation()}>
                   <svg aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24">
                     <path fill="currentColor" d="M17.3 18.7a1 1 0 0 0 1.4-1.4L13.42 12l5.3-5.3a1 1 0 0 0-1.42-1.4L12 10.58l-5.3-5.3a1 1 0 0 0-1.4 1.42L10.58 12l-5.3 5.3a1 1 0 1 0 1.42 1.4L12 13.42l5.3 5.3Z"/>
                   </svg>
-                </button>
-              </a>
+                </span>
+              </button>
             </li>
           ))}
         </ul>
