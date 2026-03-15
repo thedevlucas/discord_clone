@@ -8,7 +8,7 @@ interface UserSettingsProps {
   onClose: () => void;
 }
 
-type SettingsCategory = "mi-cuenta" | "perfiles" | "privacidad" | "seguridad" | "aplicaciones" | "conexiones" | "clips" | "amigo-activo" | "nitro" | "server-boost" | "suscripciones" | "regalar" | "biblioteca" | "inventario" | "facturacion" | "aspecto" | "accesibilidad" | "voz-video" | "texto-imagenes" | "notificaciones" | "combinaciones" | "idioma" | "modo-streamer" | "avanzado" | "historial" | "que-hay-de-nuevo" | "informacion" | "cerrar-sesion";
+type SettingsCategory = "mi-cuenta" | "perfiles" | "privacidad" | "seguridad" | "aplicaciones" | "conexiones" | "clips" | "amigo-activo" | "nitro" | "tienda-nitro" | "server-boost" | "suscripciones" | "regalar" | "biblioteca" | "inventario" | "facturacion" | "aspecto" | "accesibilidad" | "voz-video" | "texto-imagenes" | "notificaciones" | "combinaciones" | "idioma" | "modo-streamer" | "avanzado" | "historial" | "que-hay-de-nuevo" | "informacion" | "cerrar-sesion";
 
 const settingsMenu = [
   {
@@ -28,6 +28,7 @@ const settingsMenu = [
     title: "Ajustes de facturacion",
     items: [
       { id: "nitro", label: "Nitro" },
+      { id: "tienda-nitro", label: "Tienda Nitro" },
       { id: "server-boost", label: "Server Boost" },
       { id: "suscripciones", label: "Suscripciones" },
       { id: "regalar", label: "Regalos" },
@@ -373,7 +374,190 @@ export default function UserSettings({ onClose }: UserSettingsProps) {
               </div>
             )}
 
-            {activeCategory !== "mi-cuenta" && activeCategory !== "nitro" && (
+            {activeCategory === "tienda-nitro" && (
+              <div className={styles.nitroShopPage}>
+                <h2 className={styles.pageTitle}>Tienda Nitro</h2>
+                <p className={styles.shopSubtitle}>Personaliza tu perfil con articulos exclusivos</p>
+
+                {/* Categories Filter */}
+                <div className={styles.shopCategories}>
+                  <button className={`${styles.categoryBtn} ${styles.categoryBtnActive}`}>Todo</button>
+                  <button className={styles.categoryBtn}>Decoraciones de avatar</button>
+                  <button className={styles.categoryBtn}>Efectos de perfil</button>
+                  <button className={styles.categoryBtn}>Temas de perfil</button>
+                  <button className={styles.categoryBtn}>Sonidos</button>
+                </div>
+
+                {/* Avatar Decorations Section */}
+                <div className={styles.shopSection}>
+                  <div className={styles.shopSectionHeader}>
+                    <h3 className={styles.shopSectionTitle}>Decoraciones de avatar</h3>
+                    <a href="#" className={styles.viewAllLink}>Ver todo</a>
+                  </div>
+                  <div className={styles.shopGrid}>
+                    <div className={styles.shopItem}>
+                      <div className={styles.shopItemPreview} style={{ background: 'linear-gradient(135deg, #ff6b6b 0%, #ffa500 100%)' }}>
+                        <div className={styles.avatarDecoration}>
+                          <div className={styles.mockAvatar}></div>
+                          <div className={styles.decorationRing} style={{ borderColor: '#ff6b6b' }}></div>
+                        </div>
+                      </div>
+                      <div className={styles.shopItemInfo}>
+                        <span className={styles.shopItemName}>Llamas ardientes</span>
+                        <span className={styles.shopItemPrice}>$3.99</span>
+                      </div>
+                    </div>
+                    <div className={styles.shopItem}>
+                      <div className={styles.shopItemPreview} style={{ background: 'linear-gradient(135deg, #00d4ff 0%, #5865f2 100%)' }}>
+                        <div className={styles.avatarDecoration}>
+                          <div className={styles.mockAvatar}></div>
+                          <div className={styles.decorationRing} style={{ borderColor: '#00d4ff' }}></div>
+                        </div>
+                      </div>
+                      <div className={styles.shopItemInfo}>
+                        <span className={styles.shopItemName}>Aura de hielo</span>
+                        <span className={styles.shopItemPrice}>$3.99</span>
+                      </div>
+                    </div>
+                    <div className={styles.shopItem}>
+                      <div className={styles.shopItemPreview} style={{ background: 'linear-gradient(135deg, #eb459e 0%, #fee75c 100%)' }}>
+                        <div className={styles.avatarDecoration}>
+                          <div className={styles.mockAvatar}></div>
+                          <div className={styles.decorationRing} style={{ borderColor: '#eb459e' }}></div>
+                        </div>
+                      </div>
+                      <div className={styles.shopItemInfo}>
+                        <span className={styles.shopItemName}>Arcoiris magico</span>
+                        <span className={styles.shopItemPrice}>$4.99</span>
+                      </div>
+                    </div>
+                    <div className={styles.shopItem}>
+                      <div className={styles.shopItemPreview} style={{ background: 'linear-gradient(135deg, #57f287 0%, #00d4ff 100%)' }}>
+                        <div className={styles.avatarDecoration}>
+                          <div className={styles.mockAvatar}></div>
+                          <div className={styles.decorationRing} style={{ borderColor: '#57f287' }}></div>
+                        </div>
+                      </div>
+                      <div className={styles.shopItemInfo}>
+                        <span className={styles.shopItemName}>Naturaleza viva</span>
+                        <span className={styles.shopItemPrice}>$3.99</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Profile Effects Section */}
+                <div className={styles.shopSection}>
+                  <div className={styles.shopSectionHeader}>
+                    <h3 className={styles.shopSectionTitle}>Efectos de perfil</h3>
+                    <a href="#" className={styles.viewAllLink}>Ver todo</a>
+                  </div>
+                  <div className={styles.shopGrid}>
+                    <div className={styles.shopItem}>
+                      <div className={styles.shopItemPreview} style={{ background: 'linear-gradient(135deg, #5865f2 0%, #eb459e 100%)' }}>
+                        <div className={styles.effectPreview}>
+                          <span className={styles.effectEmoji}>&#10024;</span>
+                        </div>
+                      </div>
+                      <div className={styles.shopItemInfo}>
+                        <span className={styles.shopItemName}>Estrellas brillantes</span>
+                        <span className={styles.shopItemPrice}>$5.99</span>
+                      </div>
+                    </div>
+                    <div className={styles.shopItem}>
+                      <div className={styles.shopItemPreview} style={{ background: 'linear-gradient(135deg, #1e1e2e 0%, #4a4a6a 100%)' }}>
+                        <div className={styles.effectPreview}>
+                          <span className={styles.effectEmoji}>&#127769;</span>
+                        </div>
+                      </div>
+                      <div className={styles.shopItemInfo}>
+                        <span className={styles.shopItemName}>Noche estrellada</span>
+                        <span className={styles.shopItemPrice}>$5.99</span>
+                      </div>
+                    </div>
+                    <div className={styles.shopItem}>
+                      <div className={styles.shopItemPreview} style={{ background: 'linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)' }}>
+                        <div className={styles.effectPreview}>
+                          <span className={styles.effectEmoji}>&#127800;</span>
+                        </div>
+                      </div>
+                      <div className={styles.shopItemInfo}>
+                        <span className={styles.shopItemName}>Petalos de sakura</span>
+                        <span className={styles.shopItemPrice}>$5.99</span>
+                      </div>
+                    </div>
+                    <div className={styles.shopItem}>
+                      <div className={styles.shopItemPreview} style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }}>
+                        <div className={styles.effectPreview}>
+                          <span className={styles.effectEmoji}>&#9889;</span>
+                        </div>
+                      </div>
+                      <div className={styles.shopItemInfo}>
+                        <span className={styles.shopItemName}>Rayos electricos</span>
+                        <span className={styles.shopItemPrice}>$6.99</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Profile Themes Section */}
+                <div className={styles.shopSection}>
+                  <div className={styles.shopSectionHeader}>
+                    <h3 className={styles.shopSectionTitle}>Temas de perfil</h3>
+                    <a href="#" className={styles.viewAllLink}>Ver todo</a>
+                  </div>
+                  <div className={styles.shopGridLarge}>
+                    <div className={styles.shopItemLarge}>
+                      <div className={styles.themePreview} style={{ background: 'linear-gradient(135deg, #0f0f23 0%, #1a1a3e 50%, #2d1b4e 100%)' }}>
+                        <div className={styles.themeMockProfile}>
+                          <div className={styles.themeBanner} style={{ background: 'linear-gradient(90deg, #5865f2, #eb459e)' }}></div>
+                          <div className={styles.themeMockAvatar}></div>
+                        </div>
+                      </div>
+                      <div className={styles.shopItemInfo}>
+                        <span className={styles.shopItemName}>Cyberpunk</span>
+                        <span className={styles.shopItemPrice}>$7.99</span>
+                      </div>
+                    </div>
+                    <div className={styles.shopItemLarge}>
+                      <div className={styles.themePreview} style={{ background: 'linear-gradient(135deg, #1a472a 0%, #2d5a3d 50%, #3d7a52 100%)' }}>
+                        <div className={styles.themeMockProfile}>
+                          <div className={styles.themeBanner} style={{ background: 'linear-gradient(90deg, #57f287, #00d4ff)' }}></div>
+                          <div className={styles.themeMockAvatar}></div>
+                        </div>
+                      </div>
+                      <div className={styles.shopItemInfo}>
+                        <span className={styles.shopItemName}>Bosque encantado</span>
+                        <span className={styles.shopItemPrice}>$7.99</span>
+                      </div>
+                    </div>
+                    <div className={styles.shopItemLarge}>
+                      <div className={styles.themePreview} style={{ background: 'linear-gradient(135deg, #2c1810 0%, #4a2c1a 50%, #6b3d22 100%)' }}>
+                        <div className={styles.themeMockProfile}>
+                          <div className={styles.themeBanner} style={{ background: 'linear-gradient(90deg, #ff6b6b, #ffa500)' }}></div>
+                          <div className={styles.themeMockAvatar}></div>
+                        </div>
+                      </div>
+                      <div className={styles.shopItemInfo}>
+                        <span className={styles.shopItemName}>Otono calido</span>
+                        <span className={styles.shopItemPrice}>$7.99</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Nitro Banner */}
+                <div className={styles.shopNitroBanner}>
+                  <div className={styles.bannerContent}>
+                    <h3>Obten mas con Nitro</h3>
+                    <p>Suscribete a Nitro para acceder a descuentos exclusivos y articulos gratuitos cada mes.</p>
+                  </div>
+                  <button className={styles.bannerBtn}>Ver planes de Nitro</button>
+                </div>
+              </div>
+            )}
+
+            {activeCategory !== "mi-cuenta" && activeCategory !== "nitro" && activeCategory !== "tienda-nitro" && (
               <div className={styles.placeholderContent}>
                 <h2 className={styles.pageTitle}>
                   {settingsMenu.flatMap(s => s.items).find(i => i.id === activeCategory)?.label || "Ajustes"}
